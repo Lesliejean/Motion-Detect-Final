@@ -1,0 +1,36 @@
+{
+  "name": "motion-app",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "server": "nodemon lib/index.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.2",
+    "axios": "^1.2.4",
+    "bcrypt": "^5.1.0",
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "formik": "^2.2.9",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-secret": "^1.1.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.0.1",
+    "next": "13.1.2",
+    "next-auth": "^4.18.10",
+    "nodemailer": "^6.9.0",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "promise": "^8.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swr": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
