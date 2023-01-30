@@ -15,7 +15,7 @@ async function validateUser(username, password, router) {
 		if (!response.ok) {
 			alert(response.error)
 		} else {
-			router.push('http://localhost:3001//main')
+			router.push('http://localhost:3000/main')
 		}
 	});
 }
@@ -23,13 +23,7 @@ export default function Login({ providers, csrfToken }) {
     const router = useRouter();
 	const usernameInputRef = useRef();
 	const passwordInputRef = useRef();
-	// const formik = useFormik({
-	// 	initialvalues:{
-	// 		username:'',
-	// 		password:'',
-	// 	}
-	// })
-
+	
 	//handle the form
 	async function submitHandler(event) {
 		//prevent submission
