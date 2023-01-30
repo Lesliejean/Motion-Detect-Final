@@ -25,10 +25,10 @@ async function createUser(username, email, password, password1, router) {
 
 
 const Signup = () => {
-  	const usernameInputRef = useRef();
-	const emailInputRef = useRef();
-	const passwordInputRef = useRef();
-  	const password1InputRef = useRef();
+  	const usernameRef = useRef();
+	const emailRef = useRef();
+	const passwordRef = useRef();
+  	const password1Ref = useRef();
 
 	const router = useRouter();
   async function submitHandler(event) {
@@ -36,26 +36,26 @@ const Signup = () => {
 		//prevent submission
 	    event.preventDefault();
 
-	    const enteredUsername = usernameInputRef.current.value;
-	    const enteredEmail = emailInputRef.current.value;
-	    const enteredPassword = passwordInputRef.current.value;
-      	const enteredPassword1 = password1InputRef.current.value;
+	    const username = usernameRef.current.value;
+	    const email = emailRef.current.value;
+	    const password = passwordRef.current.value;
+      	const password1 = password1Ref.current.value;
 	    //validate the form
-	    if ( enteredUsername == null || enteredUsername == '' ) {
+	    if ( username == null || username == '' ) {
 	        alert("Please enter your username.");
 	        return
 	    }
 
-	    if ( enteredEmail == null || enteredEmail == '' ) {
+	    if ( email == null || email == '' ) {
 	        alert("Please enter your email.");
 	        return
 	    }
 
-	    if ( enteredPassword == null || enteredPassword == '' ) {
+	    if ( password == null || password == '' ) {
 	        alert("Please enter your password.");
 	        return
 	    } else {
-	    	if ( enteredPassword.trim().length < 7 ) {
+	    	if ( password.trim().length < 7 ) {
 	    	    alert("Password should be of atleast 7 characters.");
 	    	    return
 	    	}
@@ -64,7 +64,7 @@ const Signup = () => {
 
 	    //if the form passes, try to create user
 	    try {
-	        const result = await createUser(enteredUsername, enteredEmail, enteredPassword, enteredPassword1, router);
+	        const result = await createUser(username, email, password, password1, router);
 	        console.log(result);
 	    } catch (error) {
 	    	alert(error)
@@ -76,13 +76,13 @@ const Signup = () => {
 			<h1>Create Account</h1>
 			<form onSubmit={submitHandler}>
 				<label></label>
-				<input type="email" name="email" placeholder="Email Address" required ref={emailInputRef}/>
+				<input type="email" name="email" placeholder="Email Address" required ref={emailRef}/>
 				<label></label>
-				<input type="text" name="username" placeholder="Username"  required ref={usernameInputRef}/>
+				<input type="text" name="username" placeholder="Username"  required ref={usernameRef}/>
 				<label></label>
-				<input type="password" name="password" placeholder="Password" required ref={passwordInputRef}/>
+				<input type="password" name="password" placeholder="Password" required ref={passwordRef}/>
 				<label></label>
-				<input type="password" name="password1" placeholder="Confirm Password" required ref={password1InputRef} />
+				<input type="password" name="password1" placeholder="Confirm Password" required ref={password1Ref} />
 				<button type='submit'>Sign Up</button>
 			<closeform></closeform></form>
 			<p>

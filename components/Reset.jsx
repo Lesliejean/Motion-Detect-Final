@@ -22,9 +22,9 @@ async function updateUser(email, password, password1, router) {
         return data;
     }
     const update = () => {
-        const emailPassRef = useRef();
-        const passwordPassRef = useRef();
-        const password1PassRef = useRef();
+        const emailRef = useRef();
+        const passwordRef = useRef();
+        const password1Ref = useRef();
         const router = useRouter();
 
         async function submitHandler(event) {
@@ -32,12 +32,12 @@ async function updateUser(email, password, password1, router) {
             //prevent submission
             event.preventDefault();
     
-            const enteredEmail = emailPassRef.current.value;
-            const enteredPassword = passwordPassRef.current.value;
-            const enteredPassword1 = password1PassRef.current.value;
+            const email = emailRef.current.value;
+            const password = passwordRef.current.value;
+            const password1 = password1Ref.current.value;
 
             try {
-                const result = await updateUser(enteredEmail, enteredPassword, enteredPassword1, router);
+                const result = await updateUser(email, password, password1, router);
                 console.log(result);
             } catch (error) {
                 alert(error)
@@ -49,11 +49,11 @@ async function updateUser(email, password, password1, router) {
                 <h1>New Password</h1>
                 <form onSubmit={submitHandler}>
                     <label></label>
-                    <input type="email" name="email" placeholder="Email Address" required ref={emailPassRef}/>
+                    <input type="email" name="email" placeholder="Email Address" required ref={emailRef}/>
                     <label></label>
-                    <input type="password" name="password" placeholder="Password" required ref={passwordPassRef}/>
+                    <input type="password" name="password" placeholder="Password" required ref={passwordRef}/>
                     <label></label>
-                    <input type="password" name="password1" placeholder="Confirm Password" required ref={password1PassRef} />
+                    <input type="password" name="password1" placeholder="Confirm Password" required ref={password1Ref} />
                     <button type='submit'>Submit</button>
                 <closeform></closeform></form>
             </div>

@@ -21,30 +21,30 @@ async function validateUser(username, password, router) {
 }
 export default function Login({ providers, csrfToken }) {
     const router = useRouter();
-	const usernameInputRef = useRef();
-	const passwordInputRef = useRef();
+	const usernameRef = useRef();
+	const passwordRef = useRef();
 	
 	//handle the form
 	async function submitHandler(event) {
 		//prevent submission
 	    event.preventDefault();
 
-	    const enteredUsername = usernameInputRef.current.value;
-	    const enteredPassword = passwordInputRef.current.value;
+	    const username = usernameRef.current.value;
+	    const password = passwordRef.current.value;
 
 	    //validate the form
-	    if ( enteredUsername == null || enteredUsername == '' ) {
+	    if ( username == null || username == '' ) {
 	        alert("Please enter your username.");
 	        return
 	    }
 
-	    if ( enteredPassword == null || enteredPassword == '' ) {
+	    if ( password == null || password == '' ) {
 	        alert("Please enter your password.");
 	        return
 	    }
 
 	    try {
-	        const result = await validateUser(enteredUsername, enteredPassword, router);
+	        const result = await validateUser(username, password, router);
 	        console.log(result);
 	    } catch (error) {
 	    	alert(error)
@@ -58,9 +58,9 @@ export default function Login({ providers, csrfToken }) {
             <form onSubmit={submitHandler}>
                 <label></label>
                 <label></label>
-                <input type="text"  name="username" placeholder="Username" required ref={usernameInputRef}/>
+                <input type="text"  name="username" placeholder="Username" required ref={usernameRef}/>
                 <label></label>
-                <input type="password"  name="password" placeholder="Password" required ref={passwordInputRef}/>
+                <input type="password"  name="password" placeholder="Password" required ref={passwordRef}/>
                 <button type='submit'>Login</button>
             <closeform></closeform></form>
             <p> 
