@@ -67,7 +67,7 @@ while True:
        motionTime.append(datetime.now()) 
        start_time = str(datetime.now())
        print('START: '+ start_time)
-       #cv2.imwrite(str(path) + '\capimage.png',cur_frame)      
+       cv2.imwrite(str(path) + '\capimage.png',cur_frame)      
 
    #send video capture and datetime to nodejs
    if motionTrackList[-1] == 0 and motionTrackList[-2] == 1:  

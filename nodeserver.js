@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mysql = require("mysql2");
 const app = express();
 const cors = require('cors');
-const port = 3001;
+const port = 3000;
 
 app.use(cors())
 app.use(bodyParser.json({limit:'50mb'}));
@@ -44,15 +44,15 @@ app.post("/cap", (req, res) => {
 });
 
 app.get("/read", (req, res) => {
-  connection.query(
-    "SELECT * FROM `motioncapture`",
-    function (err, results) {
-      const image = results.map(result => `${result.capture}`);
+  db.query(
+      "SELECT * FROM `motioncapture`",
+      function (err, results) {
       try {
-        res.json({ data:results, img:image});
+          res.json({ img:results});
+        
       } catch (err) {
-        console.log("error");
+          console.log("error");
       }
-    }
+  }
   );
 });

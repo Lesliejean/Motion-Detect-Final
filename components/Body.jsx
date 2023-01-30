@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../components/All.module.css";
 import { useState, useEffect } from 'react'
+import { Buffer } from "buffer";
 
 function Body() {
   const [data, setData] = useState(null)
