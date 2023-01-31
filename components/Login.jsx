@@ -1,9 +1,9 @@
 import styles from "./All.module.css";
-import Link from "next/link";
+import Link from "next/Link";
 import {useState, useRef} from "react";
 import { useRouter } from 'next/router';
 import { getProviders, getSession, signIn, getCsrfToken } from "next-auth/react";
-import {useFormik} from 'formik';
+
 
 async function validateUser(username, password, router) {
 	const response = await signIn('credentials', {
@@ -29,22 +29,22 @@ export default function Login({ providers, csrfToken }) {
 		//prevent submission
 	    event.preventDefault();
 
-	    const username = usernameRef.current.value;
-	    const password = passwordRef.current.value;
+	    const usernameval = usernameRef.current.value;
+	    const passwordval = passwordRef.current.value;
 
 	    //validate the form
-	    if ( username == null || username == '' ) {
+	    if ( usernameval == null || usernameval == '' ) {
 	        alert("Please enter your username.");
 	        return
 	    }
 
-	    if ( password == null || password == '' ) {
+	    if ( passwordval == null || passwordval == '' ) {
 	        alert("Please enter your password.");
 	        return
 	    }
 
 	    try {
-	        const result = await validateUser(username, password, router);
+	        const result = await validateUser(usernameval, passwordval, router);
 	        console.log(result);
 	    } catch (error) {
 	    	alert(error)
@@ -64,12 +64,12 @@ export default function Login({ providers, csrfToken }) {
                 <button type='submit'>Login</button>
             <closeform></closeform></form>
             <p> 
-                <Link href="/reset">Forgot Password?</Link>
+                <a href="/reset">Forgot Password?</a>
                 <br/>
                 <br/>
                 <br/>
                 No account? 
-                <Link href="/signup"> click here</Link>
+                <a href="/signup"> click here </a>
             </p>
         </div>
         </div>

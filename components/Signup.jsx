@@ -3,6 +3,8 @@ import Link from "next/link";
 import {useState, useRef} from "react";
 import { useRouter } from 'next/router';
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 async function createUser(username, email, password, password1, router) {
   const response = await fetch('http://localhost:3001/register', {
      method: 'POST',
@@ -87,7 +89,7 @@ const Signup = () => {
 			<closeform></closeform></form>
 			<p>
 				Already have an account? 
-				<Link href="/">Login here</Link>
+				<a href="/" onClick={() => signIn()}> Login here </a>
 			</p>
 		</div>
     </div>

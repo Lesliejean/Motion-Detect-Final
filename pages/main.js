@@ -1,7 +1,7 @@
 import Body from "../components/Body.jsx"
 import Home from "../components/Nav.jsx"
 
-import { getSession } from "next-auth/react";
+import { getSession, getCsrfToken } from "next-auth/react";
 
 function Main() {
   return (
@@ -30,3 +30,4 @@ export async function getServerSideProps(context) {
      props: { session },
    };
 }
+

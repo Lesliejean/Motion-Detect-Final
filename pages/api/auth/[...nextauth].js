@@ -43,7 +43,17 @@ export const authOptions = {
     }),
   ],  
   pages: {
-    signIn: "/components/Login",
+    signIn: "/",
+    signOut: "/"  },
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      user && (token.user = user);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user = token.user;  // Setting token in session
+      return session;
+    },
   },
   secret:  process.env.JWT_SECRET,
 }
